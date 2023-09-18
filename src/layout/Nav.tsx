@@ -3,11 +3,12 @@ import '@szhsin/react-menu/dist/index.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { RiArrowUpSLine } from 'react-icons/ri';
+import { navData } from '../routes/Routes';
+
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { nav } from '../Routes';
 function Nav() {
   const loc = useLocation();
-  console.log(loc);
+
   const example = loc.pathname.includes('weekend')
     ? loc.pathname.split('/')[2]
     : '';
@@ -46,7 +47,7 @@ function Nav() {
             </div>
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
-            {nav.map((weekend, index) => (
+            {navData.map((weekend, index) => (
               <MenuEl key={index} {...weekend} />
             ))}
           </div>
