@@ -5,11 +5,11 @@ import Nav from './Nav';
 function Layout({
   children,
   experience,
-  immersive,
+  immersive = false,
 }: {
   immersive?: boolean;
   experience: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   return (
     <main className="min-h-screen bg-gray-900 w-full font-Kalam">
