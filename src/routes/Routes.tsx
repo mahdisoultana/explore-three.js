@@ -4,7 +4,7 @@ import { Debug, Drei } from '../weekEnds/week1';
 
 const weekendsExercise = [
   {
-    path: '/weekend1',
+    path: '/threejs-journey',
     children: [
       {
         path: 'drei',
@@ -19,8 +19,8 @@ const weekendsExercise = [
 ];
 
 // navigation Logic
-export const navData = weekendsExercise.map((route, index) => ({
-  weekNum: index + 1,
+export const navData = weekendsExercise.map((route) => ({
+  title: route.path.split('/')[1],
   projects: route.children.map((child) => child.path),
 }));
 

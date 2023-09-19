@@ -12,9 +12,9 @@ function Nav() {
   const example = loc.pathname.includes('weekend')
     ? loc.pathname.split('/')[2]
     : '';
-  const [minimize, setMinimize] = useState(false);
+  const [minimize, setMinimize] = useState(true);
   return (
-    <nav className=" border-b border-gray-800 relative z-[100] select-none pointer-events-none">
+    <nav className=" bg-gray-100 border-b text-gray-900 border-gray-800 relative z-[100] select-none pointer-events-none">
       <button
         className="flex items-center justify-center absolute right-2 top-full bg-gray-800 text-white w-6 h-6 rounded-b-full hover:opacity-50 pointer-events-auto"
         onClick={() => setMinimize((s) => !s)}
@@ -37,7 +37,7 @@ function Nav() {
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/">
-                <p className="pointer-events-auto hover:opacity-60 text-white font-bold text-xl">
+                <p className="pointer-events-auto hover:opacity-60  font-bold text-xl">
                   <span className="pr-2">
                     React 3Fiber {example ? 'Example :' : 'Examples'}
                   </span>
@@ -57,24 +57,18 @@ function Nav() {
   );
 }
 
-function MenuEl({
-  weekNum = 1,
-  projects,
-}: {
-  weekNum?: number;
-  projects?: string[];
-}) {
+function MenuEl({ title, projects }: { title?: string; projects?: string[] }) {
   return (
     <Menu
       className="group"
       menuButton={
-        <MenuButton className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium  pointer-events-auto">
-          WeekEnd {weekNum} {'>'}
+        <MenuButton className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium  pointer-events-auto">
+          {title} {'>'}
         </MenuButton>
       }
     >
       {projects?.map((project, index) => (
-        <NavLink key={index} to={`/weekend${weekNum}/${project.toLowerCase()}`}>
+        <NavLink key={index} to={`/${title}/${project.toLowerCase()}`}>
           {({ isActive }) => (
             <MenuItem
               className={`hover:text-blue-400 pointer-events-auto ${
