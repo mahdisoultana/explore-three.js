@@ -7,10 +7,10 @@ function LoadModels() {
   const { fox, customBurger, burger, helmet, medievalFantasyBook } =
     useControls('loadModles', {
       burger: true,
-      helmet: false,
-      customBurger: false,
-      medievalFantasyBook: false,
-      fox: false,
+      helmet: true,
+      customBurger: true,
+      medievalFantasyBook: true,
+      fox: true,
     });
   return (
     <>
