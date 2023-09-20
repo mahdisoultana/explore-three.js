@@ -3,6 +3,7 @@ import Layout from '../layout';
 import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
 import Staging from '../weekEnds/week1/Staging';
+import Text3d from '../weekEnds/week1/Text3d';
 
 const weekendsExercise = [
   {
@@ -23,6 +24,10 @@ const weekendsExercise = [
       {
         path: 'LoadModels',
         element: <Layout experience={<LoadModels />} />,
+      },
+      {
+        path: '3dText',
+        element: <Layout experience={<Text3d />} />,
       },
     ],
   },
