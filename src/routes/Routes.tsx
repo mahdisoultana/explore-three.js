@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import { Debug, Drei } from '../weekEnds/week1';
+import Staging from '../weekEnds/week1/Staging';
 
 const weekendsExercise = [
   {
@@ -13,6 +14,10 @@ const weekendsExercise = [
       {
         path: 'debug',
         element: <Layout experience={<Debug />} />,
+      },
+      {
+        path: 'staging',
+        element: <Layout experience={<Staging />} />,
       },
     ],
   },

@@ -22,7 +22,17 @@ function Layout({
             title: 'Debug Controls',
           }}
         />
-        <Canvas> {experience}</Canvas>
+        <Canvas
+          shadows
+          camera={{
+            fov: 45,
+            near: 0.1,
+            far: 200,
+            position: [-4, 3, 6],
+          }}
+        >
+          {experience}
+        </Canvas>
       </main>
       {children}
     </main>
