@@ -24,6 +24,7 @@ function Layout({
         />
         <Canvas
           shadows
+          flat
           camera={{
             fov: 45,
             near: 0.1,

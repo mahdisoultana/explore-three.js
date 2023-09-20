@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
+import PortalScene from '../weekEnds/week1/PortalScene';
 import Staging from '../weekEnds/week1/Staging';
 import Text3d from '../weekEnds/week1/Text3d';
 
@@ -28,6 +29,10 @@ const weekendsExercise = [
       {
         path: '3dText',
         element: <Layout experience={<Text3d />} />,
+      },
+      {
+        path: 'portal-scene',
+        element: <Layout experience={<PortalScene />} />,
       },
     ],
   },
