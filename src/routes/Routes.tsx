@@ -4,6 +4,7 @@ import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
 import MouseEvents from '../weekEnds/week1/MouseEvents';
 import PortalScene from '../weekEnds/week1/PortalScene';
+import PostProcessing from '../weekEnds/week1/PostProcessing';
 import Staging from '../weekEnds/week1/Staging';
 import Text3d from '../weekEnds/week1/Text3d';
 
@@ -38,6 +39,10 @@ const weekendsExercise = [
       {
         path: 'mouse-events',
         element: <Layout experience={<MouseEvents />} />,
+      },
+      {
+        path: 'post-processing',
+        element: <Layout experience={<PostProcessing />} />,
       },
     ],
   },
