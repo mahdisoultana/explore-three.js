@@ -141,9 +141,12 @@ function Effects() {
         />
       )}
 
-      {glitch && (
-        <Glitch delay={[1, 10]} duration={[0.1, 0.5]} strength={[0.2, 1]} />
-      )}
+      <Glitch
+        active={glitch}
+        delay={[1, 10]}
+        duration={[0.1, 0.5]}
+        strength={[0.2, 1]}
+      />
 
       {noise && <Noise blendFunction={BlendFunction.SOFT_LIGHT} />}
 
