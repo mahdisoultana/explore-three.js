@@ -7,6 +7,8 @@ import PortalScene from '../weekEnds/week1/PortalScene';
 import PostProcessing from '../weekEnds/week1/PostProcessing';
 import Staging from '../weekEnds/week1/Staging';
 import Text3d from '../weekEnds/week1/Text3d';
+import Game from '../weekEnds/week1/game';
+import Interface from '../weekEnds/week1/game/Interface';
 import PhysicsDemo from '../weekEnds/week1/physicsDemo';
 import SimplePortfolio from '../weekEnds/week1/simplePortfolio';
 
@@ -53,6 +55,14 @@ const weekendsExercise = [
       {
         path: 'physics',
         element: <Layout experience={<PhysicsDemo />} />,
+      },
+      {
+        path: 'game',
+        element: (
+          <Layout experience={<Game />}>
+            <Interface />
+          </Layout>
+        ),
       },
     ],
   },
