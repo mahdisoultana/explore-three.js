@@ -19,7 +19,7 @@ function Interface() {
       {phase === 'end' && (
         <p className="text-white  text-6xl  bg-gray-700/70 w-full text-center   mt-20   ">
           <button
-            className="px-8   pointer-events-auto   py-3 rounded   text-white "
+            className="px-8     py-3 rounded   text-white "
             onClick={() => {
               setPhase('restart');
               setCountState((s) => s + 5);
@@ -36,29 +36,29 @@ function Interface() {
         <div className=" bg-gray-300/0 flex items-center justify-center" />
 
         <div
-          className={` bg-gray-300/30  pointer-events-auto hover:opacity-40 cursor-pointer border-2 flex items-center justify-center ${
+          className={` bg-gray-300/30  hover:opacity-40 border-2 flex items-center justify-center ${
             forward && 'opacity-90 border-red-500'
           }`}
         ></div>
         <div className="bg-gray-300/0 flex items-center justify-center" />
 
         <div
-          className={` bg-gray-300/30  pointer-events-auto hover:opacity-40 cursor-pointer border-2 flex items-center justify-center ${
+          className={` bg-gray-300/30  hover:opacity-40 border-2 flex items-center justify-center ${
             leftward && 'opacity-90 border-red-500'
           }`}
         ></div>
         <div
-          className={` bg-gray-300/30  pointer-events-auto hover:opacity-40 cursor-pointer border-2 flex items-center justify-center ${
+          className={` bg-gray-300/30  hover:opacity-40 border-2 flex items-center justify-center ${
             backward && 'opacity-90 border-red-500'
           }`}
         ></div>
         <div
-          className={`bg-gray-300/30  pointer-events-auto hover:opacity-40 cursor-pointer border-2 flex items-center justify-center ${
+          className={`bg-gray-300/30  hover:opacity-40 border-2 flex items-center justify-center ${
             rightward && 'opacity-90 border-red-500'
           }`}
         ></div>
         <div
-          className={`bg-gray-300/30  pointer-events-auto hover:opacity-40 cursor-pointer col-span-3 border-2 flex items-center justify-center ${
+          className={`bg-gray-300/30  hover:opacity-40 col-span-3 border-2 flex items-center justify-center ${
             jump && 'opacity-90 border-red-500'
           }`}
         ></div>

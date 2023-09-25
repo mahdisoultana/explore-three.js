@@ -1,11 +1,10 @@
 import { Menu, MenuButton, MenuItem } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RiArrowUpSLine } from 'react-icons/ri';
-import { navData } from '../routes/Routes';
-
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { navData } from '../routes/Routes';
 function Nav() {
   const loc = useLocation();
 
@@ -13,6 +12,9 @@ function Nav() {
     ? loc.pathname.split('/')[2]
     : '';
   const [minimize, setMinimize] = useState(true);
+  useEffect(() => {
+    setMinimize(true);
+  }, [loc]);
   return (
     <nav className=" bg-gray-100 border-b text-gray-900 border-gray-800 relative z-[100] select-none pointer-events-none">
       <button
