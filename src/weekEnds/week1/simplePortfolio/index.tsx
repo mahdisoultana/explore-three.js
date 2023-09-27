@@ -9,9 +9,9 @@ import {
 } from '@react-three/drei';
 import { Suspense } from 'react';
 
-useGLTF.preload(
-  'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf',
-);
+// useGLTF.preload(
+//   'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf',
+// );
 function SimplePortfolio() {
   return (
     <>

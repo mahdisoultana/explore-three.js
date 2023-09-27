@@ -19,7 +19,7 @@ function Interface() {
       {phase === 'end' && (
         <p className="text-white  text-6xl  bg-gray-700/70 w-full text-center   mt-20   ">
           <button
-            className="px-8     py-3 rounded   text-white "
+            className="px-8  pointer-events-auto   py-3 rounded   text-white "
             onClick={() => {
               setPhase('restart');
               setCountState((s) => s + 5);

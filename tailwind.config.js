@@ -6,6 +6,8 @@ export default {
       fontFamily: {
         Tektur: ['Tektur', 'sans-serif'],
         Kalam: ['Kalam', 'cursive'],
+
+        Cormorant: ['Cormorant Garamond', 'serif'],
       },
     },
   },

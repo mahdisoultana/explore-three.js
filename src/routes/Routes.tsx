@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
+import ButterFly from '../weekEnds/projects/butterFly';
 import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
 import MouseEvents from '../weekEnds/week1/MouseEvents';
@@ -61,6 +62,24 @@ const weekendsExercise = [
         element: (
           <Layout experience={<Game />}>
             <Interface />
+          </Layout>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/landing-page',
+    children: [
+      {
+        path: 'butterfly',
+        element: (
+          <Layout experience={<ButterFly />}>
+            <span
+              style={{
+                background: 'linear-gradient(0deg, transparent 70%, #000  )',
+              }}
+              className=" pointer-events-none   fixed w-full h-screen top-0 left-0 bottom-0 right-0 z-[100] "
+            />
           </Layout>
         ),
       },
