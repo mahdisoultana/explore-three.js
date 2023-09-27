@@ -56,13 +56,11 @@ export function Model(props) {
 
 function Butterfly(props) {
   const group = useRef();
-  const { nodes, materials, animations, scene } = useGLTF(
-    '/butterfly/butterfly.glb',
-  );
+  const { animations, scene } = useGLTF('/butterfly/butterfly.glb');
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    actions['ArmatureAction.001'].timeScale = 0.1;
+    actions['ArmatureAction.001'].timeScale = Math.random() + 0.1;
     actions['ArmatureAction.001'].play();
   }, []);
   return <Clone object={scene} ref={group} {...props} />;

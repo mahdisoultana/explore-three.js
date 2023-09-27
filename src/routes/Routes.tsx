@@ -74,6 +74,9 @@ const weekendsExercise = [
         path: 'butterfly',
         element: (
           <Layout experience={<ButterFly />}>
+            <span className="absolute top-4 left-1/2 -translate-x-1/2 z-[110]  ">
+              <img src="/butterfly/logo.png" alt="logo" className="w-10 h-10" />
+            </span>
             <span
               style={{
                 background: 'linear-gradient(0deg, transparent 70%, #000  )',
