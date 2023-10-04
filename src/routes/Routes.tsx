@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import ButterFly from '../weekEnds/projects/butterFly';
 import Robot3d from '../weekEnds/projects/robot3d';
+import FirstLook from '../weekEnds/theatre/FirstLook';
 import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
 import MouseEvents from '../weekEnds/week1/MouseEvents';
@@ -90,6 +91,15 @@ const weekendsExercise = [
       {
         path: 'robot3d',
         element: <Layout experience={<Robot3d />} />,
+      },
+    ],
+  },
+  {
+    path: '/theatre.js',
+    children: [
+      {
+        path: 'first-look',
+        element: <Layout experience={<FirstLook />} />,
       },
     ],
   },
