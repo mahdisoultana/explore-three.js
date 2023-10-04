@@ -54,7 +54,7 @@ function HtmlContent() {
             ),
           )}
         </div>
-        <a href="https://github.com/mahdisoultana" target="no_blank">
+        <a href="https://www.linkedin.com/in/mahdisoultana/" target="no_blank">
           <button className=" mt-5 group relative h-12 w-48 overflow-hidden rounded-lg border bg-white text-lg shadow">
             <div className="absolute inset-0 w-3  bg-blue-500 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
             <span className="relative text-black hover:text-white ">

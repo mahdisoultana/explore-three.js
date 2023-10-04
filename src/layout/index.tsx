@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Leva } from 'leva';
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useLocation } from 'react-router-dom';
 import Nav from './Nav';
 
 function Layout({
@@ -14,12 +15,15 @@ function Layout({
   experience: React.ReactNode;
   children?: React.ReactNode;
 }) {
+  const { search } = useLocation();
+  console.log(search);
   return (
     <main className="min-h-screen bg-gray-100 w-full font-Kalam">
       {!immersive && <Nav />}
       <main className="fixed top-0 left-0 w-full h-screen z-10">
         <Leva
           collapsed
+          hidden={search.includes('production')}
           titleBar={{
             title: 'Debug Controls',
           }}

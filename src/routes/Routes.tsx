@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import ButterFly from '../weekEnds/projects/butterFly';
+import Robot3d from '../weekEnds/projects/robot3d';
 import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
 import MouseEvents from '../weekEnds/week1/MouseEvents';
@@ -85,6 +86,10 @@ const weekendsExercise = [
             />
           </Layout>
         ),
+      },
+      {
+        path: 'robot3d',
+        element: <Layout experience={<Robot3d />} />,
       },
     ],
   },
