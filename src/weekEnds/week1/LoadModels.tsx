@@ -170,7 +170,7 @@ import { useRef } from 'react';
 export function MedievalFantasyBook(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
-    '/medieval_fantasy_book.glb',
+    '/models/medieval_fantasy_book.glb',
   );
   const { actions } = useAnimations(animations, group);
   const { animation } = useControls('medieval', {

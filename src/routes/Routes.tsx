@@ -2,7 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import ButterFly from '../weekEnds/projects/butterFly';
 import Robot3d from '../weekEnds/projects/robot3d';
-import FirstLook from '../weekEnds/theatre/FirstLook';
+import AnimateCube from '../weekEnds/theatre/animteCube';
+import CameraFly from '../weekEnds/theatre/cameraFly';
+import FirstLook from '../weekEnds/theatre/firstLook';
 import { Debug, Drei } from '../weekEnds/week1';
 import LoadModels from '../weekEnds/week1/LoadModels';
 import MouseEvents from '../weekEnds/week1/MouseEvents';
@@ -100,6 +102,14 @@ const weekendsExercise = [
       {
         path: 'first-look',
         element: <Layout experience={<FirstLook />} />,
+      },
+      {
+        path: 'cameraFly',
+        element: <Layout experience={<CameraFly />} />,
+      },
+      {
+        path: 'animateCube',
+        element: <Layout experience={<AnimateCube />} />,
       },
     ],
   },
