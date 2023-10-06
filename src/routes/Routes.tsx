@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import ButterFly from '../weekEnds/projects/butterFly';
+import CheerConfigurator from '../weekEnds/projects/cheerConfigurator';
 import Robot3d from '../weekEnds/projects/robot3d';
 import AnimateCube from '../weekEnds/theatre/animteCube';
 import CameraFly from '../weekEnds/theatre/cameraFly';
@@ -96,6 +97,7 @@ const weekendsExercise = [
       },
     ],
   },
+
   {
     path: '/theatre.js',
     children: [
@@ -110,6 +112,15 @@ const weekendsExercise = [
       {
         path: 'animateCube',
         element: <Layout experience={<AnimateCube />} />,
+      },
+    ],
+  },
+  {
+    path: '/configurator',
+    children: [
+      {
+        path: 'CheerConfigurator',
+        element: <Layout experience={<CheerConfigurator />} />,
       },
     ],
   },
