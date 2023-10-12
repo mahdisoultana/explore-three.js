@@ -16,7 +16,7 @@ function Layout({
   children?: React.ReactNode;
 }) {
   const { search } = useLocation();
-  console.log(search);
+
   return (
     <main className="min-h-screen bg-gray-100 w-full font-Kalam">
       {!immersive && <Nav />}

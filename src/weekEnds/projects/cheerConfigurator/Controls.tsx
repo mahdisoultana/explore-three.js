@@ -7,14 +7,14 @@ function Controls({ children }: any) {
       global={true} // Spin globally or by dragging the model
       // cursor={true} // Whether to toggle cursor style on drag
       // snap={false} // Snap-back to center (can also be a spring config)
-      speed={1} // Speed factor
+      speed={2} // Speed factor
       // Zoom factor when half the polar-max is reached
       rotation={[0, 0, 0]} // Default rotation
-      polar={[-0.15, 0]} // Vertical limits
+      polar={[-0.1, 0]} // Vertical limits
       azimuth={[-Infinity, Infinity]} // Horizontal limits
       // config={{ mass: 1, tension: 170, friction: 26 }} // Spring config
     >
-      <OrbitControls enableRotate={false} maxDistance={10} minDistance={4} />
+      <OrbitControls enableRotate={false} minDistance={4} maxDistance={15} />
       {children}
     </PresentationControls>
   );

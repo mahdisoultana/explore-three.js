@@ -32,10 +32,10 @@ function PortalScene() {
   );
 }
 
-useGLTF.preload('/model/portal.glb');
+useGLTF.preload('/models/backed/portal.glb');
 function Model() {
-  const { nodes } = useGLTF('/model/portal.glb');
-  const bakedTexture = useTexture('/model/baked.jpg');
+  const { nodes } = useGLTF('/models/backed/portal.glb');
+  const bakedTexture = useTexture('/models/backed/baked.jpg');
   bakedTexture.flipY = false;
 
   const portalMaterial = useRef<any>();

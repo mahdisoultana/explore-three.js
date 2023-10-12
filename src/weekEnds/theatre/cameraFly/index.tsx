@@ -1,8 +1,8 @@
 import { ScrollControls } from '@react-three/drei';
 import { getProject } from '@theatre/core';
 import { PerspectiveCamera, SheetProvider } from '@theatre/r3f';
-import extension from '@theatre/r3f/dist/extension';
-import studio from '@theatre/studio';
+// import extension from '@theatre/r3f/dist/extension';
+// import studio from '@theatre/studio';
 import Lights from './Lights';
 import Model from './model';
 import state from './state.json';

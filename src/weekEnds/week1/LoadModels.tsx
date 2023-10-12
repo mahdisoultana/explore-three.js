@@ -64,9 +64,9 @@ function Placeholder({ scale = [2, 3, 2] }: any) {
 }
 
 // very useful to preload the model
-useGLTF.preload('/FlightHelmet/glTF/FlightHelmet.gltf');
-useGLTF.preload('/medieval_fantasy_book.glb');
-useGLTF.preload('/hamburger.glb');
+useGLTF.preload('/models/FlightHelmet/glTF/FlightHelmet.gltf');
+useGLTF.preload('/models/medieval_fantasy_book.glb');
+useGLTF.preload('/models/hamburger.glb');
 
 function Model({
   modelPath = '/FlightHelmet/glTF/FlightHelmet.gltf',
@@ -120,7 +120,7 @@ export function Burger(props) {
 
 // ------------------------------------------------------------
 function CustomBurger(props) {
-  const { nodes } = useGLTF('/hamburger.glb');
+  const { nodes } = useGLTF('/models/hamburger.glb');
   const { bunColor, steakColor, cheeseColor } = useControls('burger', {
     bunColor: '#ffffff',
     steakColor: '#ff0000',
@@ -353,7 +353,7 @@ export function MedievalFantasyBook(props) {
 }
 
 function Fox(props) {
-  const fox = useGLTF('/Fox/glTF/Fox.gltf');
+  const fox = useGLTF('/models/Fox/glTF/Fox.gltf');
   const animations = useAnimations(fox.animations, fox.scene);
   console.log(animations.names);
   const { animationName } = useControls('fox', {

@@ -13,7 +13,9 @@ import { useLayoutEffect, useRef } from 'react';
 export function RobotModel(props: any) {
   const robot = useRef<any>(null);
 
-  const { nodes, materials } = useGLTF('/phantoms/phantoms-transformed.glb');
+  const { nodes, materials } = useGLTF(
+    '/models/phantoms/phantoms-transformed.glb',
+  );
   const scroll = useScroll();
   const tl = useRef<any>();
 
@@ -96,4 +98,4 @@ export function RobotModel(props: any) {
   );
 }
 
-useGLTF.preload('/phantoms/phantoms-transformed.glb');
+useGLTF.preload('/models/phantoms/phantoms-transformed.glb');

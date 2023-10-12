@@ -1,16 +1,14 @@
 import { getProject } from '@theatre/core';
 import { PerspectiveCamera, SheetProvider, editable } from '@theatre/r3f';
-import extension from '@theatre/r3f/dist/extension';
-import studio from '@theatre/studio';
 import { useRef } from 'react';
 
 function AnimateCube() {
   const project = getProject('project');
   const sheet = project.sheet('Camera Fly');
-  if (import.meta.env.DEV) {
-    studio.initialize();
-    studio.extend(extension);
-  }
+  // if (import.meta.env.DEV) {
+  //   studio.initialize();
+  //   studio.extend(extension);
+  // }
   const box = useRef<any>();
 
   return (

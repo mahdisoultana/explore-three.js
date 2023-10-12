@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import ButterFly from '../weekEnds/projects/butterFly';
 import CheerConfigurator from '../weekEnds/projects/cheerConfigurator';
+import ChairInterface from '../weekEnds/projects/cheerConfigurator/Interface';
 import Robot3d from '../weekEnds/projects/robot3d';
 import AnimateCube from '../weekEnds/theatre/animteCube';
 import CameraFly from '../weekEnds/theatre/cameraFly';
@@ -14,7 +15,7 @@ import PostProcessing from '../weekEnds/week1/PostProcessing';
 import Staging from '../weekEnds/week1/Staging';
 import Text3d from '../weekEnds/week1/Text3d';
 import Game from '../weekEnds/week1/game';
-import Interface from '../weekEnds/week1/game/Interface';
+import GameInterface from '../weekEnds/week1/game/Interface';
 import PhysicsDemo from '../weekEnds/week1/physicsDemo';
 import SimplePortfolio from '../weekEnds/week1/simplePortfolio';
 
@@ -66,7 +67,7 @@ const weekendsExercise = [
         path: 'game',
         element: (
           <Layout experience={<Game />}>
-            <Interface />
+            <GameInterface />
           </Layout>
         ),
       },
@@ -120,7 +121,11 @@ const weekendsExercise = [
     children: [
       {
         path: 'CheerConfigurator',
-        element: <Layout experience={<CheerConfigurator />} />,
+        element: (
+          <Layout experience={<CheerConfigurator />}>
+            <ChairInterface />
+          </Layout>
+        ),
       },
     ],
   },
