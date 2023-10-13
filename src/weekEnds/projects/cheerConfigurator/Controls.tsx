@@ -15,6 +15,7 @@ function Controls({ children }: any) {
       // config={{ mass: 1, tension: 170, friction: 26 }} // Spring config
     >
       <OrbitControls enableRotate={false} minDistance={4} maxDistance={15} />
+
       {children}
     </PresentationControls>
   );

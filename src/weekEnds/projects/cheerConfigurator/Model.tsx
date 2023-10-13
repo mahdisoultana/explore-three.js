@@ -67,7 +67,11 @@ export default function Model(props: any) {
                     onPointerLeave={() => setCoat(false)}
                   >
                     <motion.mesh
-                      animate={{ y: 0, z: rotate ? 0 : -3 }}
+                      animate={{
+                        y: 0,
+                        z: rotate ? 10 : 0,
+                        transition: { duration: 0.5, type: 'spring' },
+                      }}
                       name="Madeira_(2)_Madeira_0"
                       castShadow
                       receiveShadow
@@ -100,7 +104,10 @@ export default function Model(props: any) {
                     onPointerLeave={() => setWood(false)}
                   >
                     <motion.mesh
-                      animate={{ y: rotate ? 8 : 0 }}
+                      animate={{
+                        y: rotate ? 8 : 0,
+                        transition: { duration: 0.5, type: 'spring' },
+                      }}
                       name="Almofada_Couro_0"
                       castShadow
                       receiveShadow
@@ -135,11 +142,11 @@ export default function Model(props: any) {
         scale={[60, 70, 60]}
         position={[0, 30, 0]}
         onPointerEnter={(e) => {
-          e.stopPropagation();
+          // e.stopPropagation();
           setRotate(true);
         }}
         onPointerLeave={(e) => {
-          e.stopPropagation();
+          // e.stopPropagation();
           setRotate(false);
         }}
       >

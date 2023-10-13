@@ -1,47 +1,20 @@
-import { MeshReflectorMaterial } from '@react-three/drei';
 import { useRecoilValue } from 'recoil';
 import Controls from './Controls';
+import Floor from './Floor';
 import Light from './Light';
 import Model from './Model';
-import { amountAtom, coatMaterial, legsMaterial } from './atoms';
+import { amountAtom } from './atoms';
 
 function CheerConfigurator() {
-  const { type: coatType, value: coatValue } = useRecoilValue(coatMaterial);
-  const { type: legsType, value: legsValue } = useRecoilValue(legsMaterial);
   return (
     <>
       <Light />
       <Controls>
         {/* <Suspense fallback={null}> */}
-        <Chairs key={legsType + coatType + legsValue + coatValue} />
+        <Chairs />
         {/* </Suspense> */}
       </Controls>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position-y="-.5"
-        onPointerEnter={(e) => {
-          e.stopPropagation();
-        }}
-        onPointerLeave={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <planeGeometry args={[100, 100]} />
-        <MeshReflectorMaterial
-          blur={[300, 100]} // Blur ground reflections (width, height), 0 skips blur
-          resolution={2048} // Off-buffer resolution, lower=faster, higher=better quality, slower
-          mixBlur={1} // How much blur mixes with surface roughness (default = 1)
-          mixStrength={20}
-          roughness={1}
-          depthScale={1.2}
-          minDepthThreshold={0.4} // Strength of the reflections
-          maxDepthThreshold={1.4}
-          metalness={0.5}
-          color="#101010"
-          mirror={1} // Strength of the reflections
-          // Mirror environment, 0 = texture colors, 1 = pick up env colors
-        />
-      </mesh>
+      <Floor />
     </>
   );
 }

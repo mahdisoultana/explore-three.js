@@ -4,6 +4,8 @@ import { Leva } from 'leva';
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { LightDarkAtom } from '../components/shared/LightDarkButton';
 import Nav from './Nav';
 
 function Layout({
@@ -16,9 +18,13 @@ function Layout({
   children?: React.ReactNode;
 }) {
   const { search } = useLocation();
-
+  const light = useRecoilValue(LightDarkAtom);
   return (
-    <main className="min-h-screen bg-gray-100 w-full font-Kalam">
+    <main
+      className={`min-h-screen bg-gray-100 w-full font-Kalam ${
+        !light && 'dark'
+      }`}
+    >
       {!immersive && <Nav />}
       <main className="fixed top-0 left-0 w-full h-screen z-10">
         <Leva
