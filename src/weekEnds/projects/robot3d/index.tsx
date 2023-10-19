@@ -10,7 +10,6 @@ function Robot3d() {
       <ScrollControls pages={4} damping={0.1}>
         <RobotModel />
 
-        <Scroll></Scroll>
         <Scroll html className="w-[100vw]">
           <HtmlContent />
         </Scroll>

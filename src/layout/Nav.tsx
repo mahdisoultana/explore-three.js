@@ -8,15 +8,12 @@ import { navData } from '../routes/Routes';
 function Nav() {
   const loc = useLocation();
 
-  const example = loc.pathname.includes('weekend')
-    ? loc.pathname.split('/')[2]
-    : '';
-  const [minimize, setMinimize] = useState(true);
+  const [minimize, setMinimize] = useState(false);
   useEffect(() => {
     setMinimize(true);
   }, [loc]);
   return (
-    <nav className=" bg-gray-100 border-b text-gray-900 border-gray-800 relative z-[100] select-none pointer-events-none">
+    <nav className="bg-white border-b text-gray-900 border-gray-800 relative z-[1111] select-none pointer-events-none">
       <button
         className="flex items-center justify-center absolute right-2 top-full bg-gray-800 text-white w-6 h-6 rounded-b-full hover:opacity-50 pointer-events-auto"
         onClick={() => setMinimize((s) => !s)}
@@ -40,10 +37,8 @@ function Nav() {
             <div className="flex-shrink-0 flex items-center">
               <Link to="/">
                 <p className="pointer-events-auto hover:opacity-60  font-bold text-xl">
-                  <span className="pr-2">
-                    React 3Fiber {example ? 'Example :' : 'Examples'}
-                  </span>
-                  <span className="underline pl-4 ">{example}</span>
+                  <span className="pr-2">React 3Fiber</span>
+                  {/* <span className="underline pl-4 ">{example}</span> */}
                 </p>
               </Link>
             </div>

@@ -1,12 +1,17 @@
 import { KeyboardControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Leva } from 'leva';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LightDarkAtom } from '../components/shared/LightDarkButton';
+import { scrollAtom } from '../hooks/scrollAtom';
 import Nav from './Nav';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Layout({
   children,
@@ -19,14 +24,39 @@ function Layout({
 }) {
   const { search } = useLocation();
   const light = useRecoilValue(LightDarkAtom);
+  const setScroll = useSetRecoilState(scrollAtom);
+
+  const containerRef = useRef<any>(null);
+
+  useEffect(() => {
+    let tm = setTimeout(() => {
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top top',
+        // end early before (100px) we hit the end of the content container
+        end: 'bottom-=100px bottom',
+        // markers: {
+        //   startColor: 'yellow',
+        //   endColor: 'yellow',
+        //   indent: 200,
+        // },
+        onUpdate(p) {
+          setScroll(+p.progress.toFixed(2));
+        },
+      });
+    }, 10);
+    return () => {
+      clearTimeout(tm);
+    };
+  }, []);
   return (
     <main
-      className={`min-h-screen bg-gray-100 w-full font-Kalam ${
+      className={`min-h-[90vh] overflow-hidden relative  w-full font-Kalam ${
         !light && 'dark'
       }`}
     >
-      {!immersive && <Nav />}
-      <main className="fixed top-0 left-0 w-full h-screen z-10">
+      {<Nav />}
+      <main className="fixed top-0 left-0 w-full h-screen z-[1] ">
         <Leva
           collapsed
           hidden={search.includes('production')}
@@ -71,10 +101,15 @@ function Layout({
             >
               {experience}
             </Canvas>
-            {children}
           </KeyboardControls>
         </ErrorBoundary>
       </main>
+      <div
+        ref={containerRef}
+        className="relative  h-full  z-[100] bg-gray-700/90 w-[100vw]"
+      >
+        {children}
+      </div>
     </main>
   );
 }

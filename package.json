@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cyriacbr/react-split-text": "^1.0.0",
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.4",
     "@react-three/postprocessing": "2.14",
     "@react-three/rapier": "1.0",
+    "@studio-freight/lenis": "^1.0.27",
     "@szhsin/react-menu": "^4.0.3",
     "@theatre/core": "^0.7.0",
     "@theatre/r3f": "^0.7.0",
@@ -30,6 +32,7 @@
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0",
     "recoil": "^0.7.7",
+    "splitting": "^1.0.6",
     "three": "^0.156.1",
     "use-elapsed-time": "^3.0.4",
     "uuid": "^9.0.1",
@@ -41,6 +44,7 @@
     "@tanstack/react-query-devtools": "^4.35.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/splitting": "^1.0.3",
     "@types/three": "^0.156.0",
     "@types/uuid": "^9.0.5",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

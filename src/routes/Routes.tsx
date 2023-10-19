@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layout';
 import ButterFly from '../weekEnds/projects/butterFly';
+import CarConfigurator1 from '../weekEnds/projects/carConfigurator1';
+import HtmlContent from '../weekEnds/projects/carConfigurator1/HtmlContent';
 import CheerConfigurator from '../weekEnds/projects/cheerConfigurator';
 import ChairInterface from '../weekEnds/projects/cheerConfigurator/Interface';
 import Robot3d from '../weekEnds/projects/robot3d';
@@ -117,13 +119,21 @@ const weekendsExercise = [
     ],
   },
   {
-    path: '/configurator',
+    path: '/configurators',
     children: [
       {
-        path: 'CheerConfigurator',
+        path: 'cheer',
         element: (
           <Layout experience={<CheerConfigurator />}>
             <ChairInterface />
+          </Layout>
+        ),
+      },
+      {
+        path: 'car1',
+        element: (
+          <Layout experience={<CarConfigurator1 />}>
+            <HtmlContent />
           </Layout>
         ),
       },

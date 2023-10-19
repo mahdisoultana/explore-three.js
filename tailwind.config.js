@@ -9,6 +9,8 @@ export default {
         Kalam: ['Kalam', 'cursive'],
 
         Cormorant: ['Cormorant Garamond', 'serif'],
+        Oxygen: ['Oxygen', 'sans-serif'],
+        Montserrat: ['Montserrat', 'sans-serif'],
       },
     },
   },
