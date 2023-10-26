@@ -10,15 +10,16 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LightDarkAtom } from '../components/shared/LightDarkButton';
 import { scrollAtom } from '../hooks/scrollAtom';
 import Nav from './Nav';
-
 gsap.registerPlugin(ScrollTrigger);
 
 function Layout({
   children,
   experience,
   immersive = false,
+  zIndexCanvas = 1,
 }: {
   immersive?: boolean;
+  zIndexCanvas?: number;
   experience: React.ReactNode;
   children?: React.ReactNode;
 }) {
@@ -41,10 +42,11 @@ function Layout({
         //   indent: 200,
         // },
         onUpdate(p) {
-          setScroll(+p.progress.toFixed(2));
+          setScroll(+p.progress.toFixed(10));
         },
       });
     }, 10);
+
     return () => {
       clearTimeout(tm);
     };
@@ -56,7 +58,10 @@ function Layout({
       }`}
     >
       {<Nav />}
-      <main className="fixed top-0 left-0 w-full h-screen z-[1] ">
+      <main
+        className={`fixed top-0 left-0 w-full h-screen  pointer-events-none  `}
+        style={{ zIndex: zIndexCanvas }}
+      >
         <Leva
           collapsed
           hidden={search.includes('production')}
@@ -98,6 +103,12 @@ function Layout({
                 far: 200,
                 position: [-4, 3, 6],
               }}
+              onCreated={(state) => {
+                console.log(state);
+                // state.gl.setClearColor('#000000');
+
+                // state.gl.autoClear = false;
+              }}
             >
               {experience}
             </Canvas>
@@ -106,7 +117,8 @@ function Layout({
       </main>
       <div
         ref={containerRef}
-        className="relative  h-full  z-[100] bg-gray-700/90 w-[100vw]"
+        className="relative  h-full  z-[100] bg-gray-700/0 w-[100vw]"
+        style={{ color: light ? 'black' : 'white' }}
       >
         {children}
       </div>

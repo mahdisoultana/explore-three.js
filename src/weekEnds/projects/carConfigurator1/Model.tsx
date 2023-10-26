@@ -7,35 +7,114 @@ Title: Fictional supercar - V12 Goblin
 */
 
 import { Caustics, MeshTransmissionMaterial, useGLTF } from '@react-three/drei';
-import { useCurrentSheet } from '@theatre/r3f';
+import { motion } from 'framer-motion-3d';
+import { memo } from 'react';
+import { useRecoilValue } from 'recoil';
 import * as THREE from 'three';
 import { useLegsTexture } from '../cheerConfigurator/hooks';
-const tireMaterial = new THREE.MeshStandardMaterial({
-  color: 'black',
-});
-const wheelMetal = new THREE.MeshStandardMaterial({
-  color: 'green',
-});
-
-export function Model(props: any) {
+import { pageAtom, selectedAtom } from './atoms';
+import { useTireM } from './hooks';
+export const Model = memo((props: any) => {
   const { nodes, materials } = useGLTF('/models/cars/car1/car.glb');
-  const sheet = useCurrentSheet()!;
+  const page = useRecoilValue(pageAtom);
+  const { tire, wheel, brake } = useRecoilValue(selectedAtom);
+
+  const { tireMat } = useTireM();
+  const mat = useLegsTexture();
+  const tireMaterial = new THREE.MeshStandardMaterial({
+    ...tireMat,
+    color: tireColors[tire],
+    roughness: 0,
+    // // toneMapped: false,
+    // roughnessMap: null,
+  });
+  const wheelMetal = new THREE.MeshStandardMaterial({
+    ...mat,
+    color: wheelColors[wheel],
+    roughness: 1,
+    // roughnessMap: null,
+  });
+  const containerVar = {
+    stop: {},
+    fast: {},
+    slow: {},
+    animate: {},
+    initial: {},
+  };
+
+  const variants = {
+    stop: {
+      rotateX: 0,
+      transition: { duration: 4, repeat: 0, ease: 'linear' },
+    },
+    fast: {
+      rotateX: 2 * Math.PI,
+      transition: { duration: 1, repeat: Infinity, ease: 'linear' },
+    },
+    slow: {
+      rotateX: 2 * Math.PI,
+      transition: { duration: 11, repeat: Infinity, ease: 'linear' },
+    },
+    animate: {
+      rotateX: 2 * Math.PI,
+      transition: { duration: 2, repeat: Infinity, ease: 'linear' },
+    },
+    initial: {
+      rotateX: 0,
+    },
+  };
+
+  let animateWheel = 'animate';
+
+  switch (page) {
+    case 0:
+      animateWheel = 'fast';
+      break;
+    case 1:
+      animateWheel = 'animate';
+      break;
+    case 2:
+      animateWheel = 'stop';
+      break;
+    case 3:
+      animateWheel = 'slow';
+      break;
+    case 4:
+      animateWheel = 'animate';
+      break;
+    default:
+      animateWheel = 'animate';
+  }
 
   return (
-    <group {...props} dispose={null}>
+    <motion.group
+      key={animateWheel}
+      variants={containerVar}
+      animate={animateWheel}
+      initial="initial"
+      {...props}
+      dispose={null}
+    >
       <group position={[0.102, -0.355, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[-Math.PI, 0, 0]}>
           <group rotation={[-Math.PI, 0, -Math.PI]}>
             {/* wheel1 BL */}
-            <group position={[0.941, 1.434, 0.386]} rotation={[0, -0.035, 0]}>
+            <motion.group
+              position={[0.941, 1.434, 0.386]}
+              rotation={[0, -0.035, 0]}
+            >
               <group position={[0.007, 0, 0]}>
-                <mesh
+                <motion.mesh
+                  variants={variants}
+                  animate={animateWheel}
                   geometry={nodes.car_wheel_BL_car_tire_0.geometry}
                   material={tireMaterial}
                 />
-                <mesh
+                <motion.mesh
+                  variants={variants}
                   geometry={nodes.car_wheel_BL_car_body_0.geometry}
                   material={wheelMetal}
+                  animate={animateWheel}
                 />
               </group>
               <mesh
@@ -43,36 +122,50 @@ export function Model(props: any) {
                 material={materials.car_body}
                 position={[0.007, 0, 0]}
               >
-                <meshStandardMaterial color="red" />
+                <meshStandardMaterial {...mat} color={BrakeColors[brake]} />
               </mesh>
-            </group>
+            </motion.group>
             {/* wheel2 BR */}
-            <group position={[-0.941, 1.434, 0.386]} rotation={[0, 0.035, 0]}>
-              <mesh
+            <motion.group
+              position={[-0.941, 1.434, 0.386]}
+              rotation={[0, 0.035, 0]}
+            >
+              <motion.mesh
                 geometry={nodes.car_wheel_BR_car_body_0.geometry}
                 material={wheelMetal}
+                variants={variants}
+                animate={animateWheel}
               />
-              <mesh
+              <motion.mesh
+                variants={variants}
                 geometry={nodes.car_wheel_BR_car_tire_0.geometry}
                 material={tireMaterial}
+                animate={animateWheel}
               />
               <mesh
                 geometry={nodes.car_brake_BR_car_body_0.geometry}
                 material={materials.car_body}
               >
-                <meshStandardMaterial color="red" />
+                <meshStandardMaterial {...mat} color={BrakeColors[brake]} />
               </mesh>
-            </group>
+            </motion.group>
             {/* wheel3 FL */}
-            <group position={[0.829, -1.306, 0.37]} rotation={[0, -0.052, 0]}>
+            <motion.group
+              position={[0.829, -1.306, 0.37]}
+              rotation={[0, -0.052, 0]}
+            >
               <group position={[0.008, 0, 0]}>
-                <mesh
+                <motion.mesh
+                  variants={variants}
                   geometry={nodes.car_wheel_FL_car_body_0.geometry}
                   material={wheelMetal}
+                  animate={animateWheel}
                 />
-                <mesh
+                <motion.mesh
+                  variants={variants}
                   geometry={nodes.car_wheel_FL_car_tire_0.geometry}
                   material={tireMaterial}
+                  animate={animateWheel}
                 />
               </group>
               <mesh
@@ -80,19 +173,26 @@ export function Model(props: any) {
                 material={materials.car_body}
                 position={[0.008, 0, 0]}
               >
-                <meshStandardMaterial color="red" />
+                <meshStandardMaterial {...mat} color={BrakeColors[brake]} />
               </mesh>
-            </group>
+            </motion.group>
             {/* wheel4 FR */}
-            <group position={[-0.829, -1.306, 0.366]} rotation={[0, 0.052, 0]}>
+            <motion.group
+              position={[-0.829, -1.306, 0.366]}
+              rotation={[0, 0.052, 0]}
+            >
               <group position={[0, 0, 0]}>
-                <mesh
+                <motion.mesh
+                  variants={variants}
                   geometry={nodes.car_wheel_FR_car_tire_0.geometry}
                   material={tireMaterial}
+                  animate={animateWheel}
                 />
-                <mesh
+                <motion.mesh
+                  variants={variants}
                   geometry={nodes.car_wheel_FR_car_body_0.geometry}
                   material={wheelMetal}
+                  animate={animateWheel}
                 />
               </group>
               {/* brake */}
@@ -101,9 +201,9 @@ export function Model(props: any) {
                 material={materials.car_body}
                 position={[0, 0, 0]}
               >
-                <meshStandardMaterial color="red" />
+                <meshStandardMaterial {...mat} color={BrakeColors[brake]} />
               </mesh>
-            </group>
+            </motion.group>
             {/* Glasses */}
             <Glasses nodes={nodes} />
             {/* Body */}
@@ -113,25 +213,15 @@ export function Model(props: any) {
           </group>
         </group>
       </group>
-    </group>
+    </motion.group>
   );
-}
+});
 
 useGLTF.preload('/models/cars/car1/car.glb');
 
 function Glasses({ nodes }: any) {
   return (
-    <Caustics
-      backfaces
-      color={[1, 0.8, 0.8]}
-      focus={[0, 1.2, 0]}
-      lightSource={[-2, 2.5, -2.5]}
-      frustum={1.75}
-      intensity={0.005}
-      worldRadius={0.66 / 10}
-      ior={0.6}
-      backfaceIor={1.26}
-    >
+    <Caustics color={new THREE.Color('black')}>
       <mesh
         castShadow
         receiveShadow
@@ -139,10 +229,12 @@ function Glasses({ nodes }: any) {
         geometry={nodes.car_glass_car_glass_0.geometry}
       >
         <MeshTransmissionMaterial
-          thickness={0.1}
-          clearcoatRoughness={1}
-          clearcoat={1}
-          envMapIntensity={3}
+          thickness={0.05}
+          transmission={2}
+          toneMapped
+          color={'black'}
+          transparent
+          specularColor={'white'}
         />
       </mesh>
     </Caustics>
@@ -151,6 +243,7 @@ function Glasses({ nodes }: any) {
 
 function BodyCar({ nodes }: any) {
   const mat = useLegsTexture();
+  const { body } = useRecoilValue(selectedAtom);
   return (
     <mesh
       geometry={nodes.clearcoat_clearcoat_0.geometry}
@@ -158,19 +251,62 @@ function BodyCar({ nodes }: any) {
       position={[0, 0, 0.732]}
       rotation={[-Math.PI, 0, -Math.PI]}
     >
-      <meshStandardMaterial {...mat} />
+      <meshStandardMaterial {...mat} color={bodyColors[body]} />
     </mesh>
   );
 }
 function BodyAccessories({ nodes }: any) {
   const mat = useLegsTexture();
+  const { accessories } = useRecoilValue(selectedAtom);
+
   return (
     <mesh
       geometry={nodes.car_body_car_body_0.geometry}
       position={[0, 0, 0.732]}
       rotation={[-Math.PI, 0, -Math.PI]}
     >
-      <meshStandardMaterial {...mat} color="green" />
+      <meshStandardMaterial {...mat} color={accessoriesColors[accessories]} />
     </mesh>
   );
 }
+
+export const bodyColors = [
+  '#FE4501',
+  '#202125',
+  '#f1f1f1',
+  '#5B5A0A',
+  '#B41A14',
+  '#035BF5',
+];
+export const wheelColors = [
+  '#f1f1f1',
+  '#9CA6AD',
+  '#171516',
+  '#6E1B02',
+  '#035BF5',
+  '#5B5A0A',
+];
+export const accessoriesColors = [
+  '#202125',
+  '#5B5A0A',
+  '#035BF5',
+  '#B41A14',
+  '#FE4501',
+  '#f1f1f1',
+];
+export const tireColors = [
+  '#202125',
+  '#9CA6AD',
+  '#FE4501',
+  '#035BF5',
+  '#f1f1f1',
+  '#5B5A0A',
+];
+export const BrakeColors = [
+  '#FE4501',
+  '#035BF5',
+  '#202125',
+  '#5B5A0A',
+  '#B41A14',
+  '#E8F0DE',
+];

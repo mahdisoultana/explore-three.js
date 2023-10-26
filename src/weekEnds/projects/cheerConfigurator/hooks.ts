@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import * as THREE from 'three';
+import useTexturesModel from '../../../hooks/useTexturesModel';
 import { coatMaterial, legsMaterial } from './atoms';
-import useTexturesModel from './useTexturesModel';
 export const useControls = () => {
   const [rotate, setRotate] = useState(false);
   const [coat, setCoat] = useState(false);
@@ -23,14 +23,14 @@ export function useCoatTexture() {
   const Leathermaterials = [leather1, leather2];
   Fabricmaterials.forEach((material) => {
     Object.values(material).forEach((value, key) => {
-      value.repeat.set(4, 4);
+      value.repeat.set(6, 6);
 
       value.wrapS = value.wrapT = THREE.RepeatWrapping;
     });
   });
   Leathermaterials.forEach((material) => {
     Object.values(material).forEach((value) => {
-      value.repeat.set(3, 4);
+      value.repeat.set(6, 6);
       value.wrapS = value.wrapT = THREE.RepeatWrapping;
     });
   });
@@ -54,7 +54,7 @@ export function useLegsTexture() {
   const metalMaterials = [metal1, metal2, metal3];
   metalMaterials.forEach((material) => {
     Object.values(material).forEach((value) => {
-      value.repeat.set(2, 2);
+      value.repeat.set(36, 36);
       value.wrapS = value.wrapT = THREE.RepeatWrapping;
     });
   });

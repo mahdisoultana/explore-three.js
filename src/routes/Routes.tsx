@@ -6,6 +6,7 @@ import HtmlContent from '../weekEnds/projects/carConfigurator1/HtmlContent';
 import CheerConfigurator from '../weekEnds/projects/cheerConfigurator';
 import ChairInterface from '../weekEnds/projects/cheerConfigurator/Interface';
 import Robot3d from '../weekEnds/projects/robot3d';
+import Monkey from '../weekEnds/textureEx/monkey';
 import AnimateCube from '../weekEnds/theatre/animteCube';
 import CameraFly from '../weekEnds/theatre/cameraFly';
 import FirstLook from '../weekEnds/theatre/firstLook';
@@ -118,6 +119,7 @@ const weekendsExercise = [
       },
     ],
   },
+
   {
     path: '/configurators',
     children: [
@@ -128,6 +130,23 @@ const weekendsExercise = [
             <ChairInterface />
           </Layout>
         ),
+      },
+      {
+        path: 'car1',
+        element: (
+          <Layout experience={<CarConfigurator1 />}>
+            <HtmlContent />
+          </Layout>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/textures',
+    children: [
+      {
+        path: 'monkey',
+        element: <Layout experience={<Monkey />} />,
       },
       {
         path: 'car1',

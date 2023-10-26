@@ -18,7 +18,7 @@ export const legsMaterial = atom<LegsMaterial>({
   key: 'legsMaterial',
   default: {
     type: 'metal',
-    value: 1,
+    value: 2,
   },
 });
 export const selectedCoatMaterial = atom<'leather' | 'fabric'>({
